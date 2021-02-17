@@ -1,0 +1,96 @@
+import java.util.Scanner;
+//Program designed to compute the costs of owning a car based on specific details
+
+public class CarCosts {
+    public static void main(String[] args){
+
+        //==========Car name (challenge task)==========//
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Please enter the name of car 1: ");
+        String car1 = input.nextLine();
+        System.out.print("Please enter the name of car 2: ");
+        String car2 = input.nextLine();
+
+        //=================Constants=================//
+
+        //Car price
+        double CAR1_PRICE = 12000;
+        double CAR2_PRICE = 18000;
+
+        //Fuel price
+        double FUEL_PRICE1 = 1.1;
+        double FUEL_PRICE2 = 1.4;
+
+        //KM per litre
+        double CAR1_ECONOMY = 20;
+        double CAR2_ECONOMY = 35;
+
+        //Service interval
+        double CAR1_SERVICE_DIST = 15000;
+        double CAR2_SERVICE_DIST = 25000;
+
+        //Service cost
+        double SERVICE1_PRICE = 100;
+        double SERVICE2_PRICE = 200;
+
+        //Mileage
+        double MILEAGE = 50000;
+
+        //=================Calculations=================//
+
+        //==Car 1==//
+            //Costs for 50,000 KM
+        double CAR1_COSTS1 = CAR1_PRICE + (((MILEAGE/CAR1_ECONOMY)) * FUEL_PRICE1) + ((MILEAGE / CAR1_SERVICE_DIST) * SERVICE1_PRICE);
+            //Costs for 100,000 KM
+        double CAR1_COSTS2 = CAR1_PRICE + ((((MILEAGE*2)/CAR1_ECONOMY)) * FUEL_PRICE1) + (((MILEAGE*2) / CAR1_SERVICE_DIST) * SERVICE1_PRICE);
+            //Costs for 200,000 KM
+        double CAR1_COSTS3 = CAR1_PRICE + ((((MILEAGE*4)/CAR1_ECONOMY)) * FUEL_PRICE1) + (((MILEAGE*4) / CAR1_SERVICE_DIST) * SERVICE1_PRICE);
+            //Costs for 300,000 KM
+        double CAR1_COSTS4 = CAR1_PRICE + ((((MILEAGE*6)/CAR1_ECONOMY)) * FUEL_PRICE1) + (((MILEAGE*6) / CAR1_SERVICE_DIST) * SERVICE1_PRICE);
+
+        //==Car 2==//
+            //Costs for 50,000 KM
+        double CAR2_COSTS1 = CAR2_PRICE + ((((MILEAGE)/CAR2_ECONOMY)) * FUEL_PRICE2) + ((MILEAGE / CAR2_SERVICE_DIST) * SERVICE2_PRICE);
+            //Costs for 100,000 KM
+        double CAR2_COSTS2 = CAR2_PRICE + ((((MILEAGE*2)/CAR2_ECONOMY)) * FUEL_PRICE2) + (((MILEAGE*2) / CAR2_SERVICE_DIST) * SERVICE2_PRICE);
+            //Costs for 200,000 KM
+        double CAR2_COSTS3 = CAR2_PRICE + ((((MILEAGE*4)/CAR2_ECONOMY)) * FUEL_PRICE2) + (((MILEAGE*4) / CAR2_SERVICE_DIST) * SERVICE2_PRICE);
+            //Costs for 300,000 KM
+        double CAR2_COSTS4 = CAR2_PRICE + ((((MILEAGE*6)/CAR2_ECONOMY)) * FUEL_PRICE2) + (((MILEAGE*6) / CAR2_SERVICE_DIST) * SERVICE2_PRICE);
+
+        //===============Round and convert to string==============//
+
+        String Car1__costs1 = String.format("%.2f", CAR1_COSTS1);
+        String Car1__costs2 = String.format("%.2f", CAR1_COSTS2);
+        String Car1__costs3 = String.format("%.2f", CAR1_COSTS3);
+        String Car1__costs4 = String.format("%.2f", CAR1_COSTS4);
+
+        String Car2__costs1 = String.format("%.2f", CAR2_COSTS1);
+        String Car2__costs2 = String.format("%.2f", CAR2_COSTS2);
+        String Car2__costs3 = String.format("%.2f", CAR2_COSTS3);
+        String Car2__costs4 = String.format("%.2f", CAR2_COSTS4);
+
+        //=================Output=================//
+
+        System.out.printf("\n%s\n\n50,000 KM:\n%.2f USD.\n\n100,000 KM:\n%.2f USD.\n\n200,000KM:\n%.2f USD\n\n300,000 KM:\n%.2f USD\n\n", car1, CAR1_COSTS1, CAR1_COSTS2, CAR1_COSTS3, CAR1_COSTS4);
+        System.out.printf("\n%s\n\n50,000 KM:\n%.2f USD.\n\n100,000 KM:\n%.2f USD.\n\n200,000KM:\n%.2f USD\n\n300,000 KM:\n%.2f USD\n\n", car2, CAR2_COSTS1, CAR2_COSTS2, CAR2_COSTS3, CAR2_COSTS4);
+
+        //=================Table=================//
+
+        final Object[] [] table = new String[9][];
+        table[0] = new String[] {car1, car2};
+        table[1] = new String[] {"\n50,000 KM", "50,000 KM"};
+        table[2] = new String[] {"$" + Car1__costs1,"$" + Car2__costs1};
+        table[3] = new String[] {"\n100,000 KM", "100,000 KM"};
+        table[4] = new String[] {"$" + Car1__costs2,"$" + Car2__costs2};
+        table[5] = new String[] {"\n200,000 KM", "200,000 KM"};
+        table[6] = new String[] {"$" + Car1__costs3,"$" + Car2__costs3};
+        table[7] = new String[] {"\n300,000 KM", "300,000 KM"};
+        table[8] = new String[] {"$" + Car1__costs4,"$" + Car2__costs4};
+
+        for (final Object[] row : table) {
+            System.out.printf("%-15s%-15s%n", row);
+        }
+    }
+}
